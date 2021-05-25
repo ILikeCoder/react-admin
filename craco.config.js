@@ -16,6 +16,7 @@ module.exports = {
       "@pages": pathResolve("src/pages"),
       "@store": pathResolve("src/store"),
       "@utils": pathResolve("src/utils"),
+      "@api": pathResolve("src/api"),
     },
   },
   //antd的按需引入

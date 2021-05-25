@@ -10,7 +10,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"]
     },
     "experimentalDecorators": true
   },
