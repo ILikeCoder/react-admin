@@ -5,6 +5,10 @@ import "./header.less";
  */
 export default class Header extends Component {
   render() {
+<<<<<<< HEAD
     return <div className='header'>Header</div>;
+=======
+    return <div className='header'>Header1</div>;
+>>>>>>> dev
   }
 }

@@ -1,29 +1,48 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from "antd";
+import { Redirect } from "react-router-dom";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./login.less";
 import logo from "./images/logo.png";
+import { reqLogin } from "../../api";
+import { saveUser } from "../../utils/storageUtils";
+import memoryUtils from "../../utils/memoryUtils";
 
 const Item = Form.Item;
 export default class Login extends Component {
-  formRef = React.createRef();
   //登录时表单验证成功的回调
-  onFinish = values => {
-    console.log(values);
+  onFinish = async values => {
+    //结构赋值username,password
+    const { username, password } = values;
+    //发送ajax请求
+    const res = await reqLogin(username, password);
+    //返回的状态码不等于0 直接退出函数并提示错误消息
+    if (res.status !== 0) return message.error(res.msg);
+    //存储登录成功的用户名
+    memoryUtils.user = res.data;
+    saveUser(res.data);
+    // 提示信息
+    message.success("登录成功");
+    // 路由跳转
+    this.props.history.replace("/");
   };
   //表单验证失败的回调函数
   onFinishFailed = () => {};
+
+  //组件的渲染函数
   render() {
+    let user = memoryUtils.user;
+    if (user && user._id) return <Redirect to='/' />;
+
     return (
       <div className='login'>
         <header className='login-header'>
           <img src={logo} alt='logo' />
-          <h1>React项目：后台管理系统</h1>
+          <h1>React项目：后台管理系统0</h1>
         </header>
         <section className='login-content'>
           <h2>用户登录</h2>
           <Form
-            ref={this.formRef}
             onFinish={this.onFinish}
             onFinishFailed={this.onFinishFailed}
             name='normal_login'
@@ -31,6 +50,7 @@ export default class Login extends Component {
           >
             <Item
               name='username'
+              initialValue='admin'
               rules={[
                 {
                   required: true,
@@ -57,6 +77,7 @@ export default class Login extends Component {
             </Item>
             <Item
               name='password'
+              initialValue='admin'
               rules={[
                 {
                   required: true,
