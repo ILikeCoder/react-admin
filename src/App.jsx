@@ -15,3 +15,4 @@ export default class App extends Component {
     );
   }
 }
+console.log(1);

@@ -5,6 +5,6 @@ import "./header.less";
  */
 export default class Header extends Component {
   render() {
-    return <div className='header'>Header</div>;
+    return <div className='header'>Header1</div>;
   }
 }

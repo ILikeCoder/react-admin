@@ -5,6 +5,6 @@ import "./leftNav.less";
  */
 export default class LeftNav extends Component {
   render() {
-    return <div className='left-nav'>LeftNav</div>;
+    return <div className='left-nav'>LeftNav1</div>;
   }
 }
