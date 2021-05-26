@@ -15,9 +15,11 @@ export default class Admin extends Component {
           <LeftNav />
         </Sider>
         <Layout>
-          <Header>Header1</Header>
+          <Header>Header</Header>
           <Content style={{ backgroundColor: "#fff" }}>Content</Content>
-          <Footer style={{textAlign:'center',color:'#ccc'}}>推荐使用谷歌浏览器，可以获得最佳操作体验</Footer>
+          <Footer style={{ textAlign: "center", color: "#ccc" }}>
+            推荐使用谷歌浏览器，可以获得最佳操作体验
+          </Footer>
         </Layout>
       </Layout>
     );

@@ -11,7 +11,6 @@
       "@pages/*": ["src/pages/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["src/utils/*"],
-      "@api/*": ["src/api/*"]
     },
     "experimentalDecorators": true
   },

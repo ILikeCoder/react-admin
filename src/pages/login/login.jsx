@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import "./login.less";
-import logo from "./images/logo.png";
 import { reqLogin } from "../../api";
 import { saveUser } from "../../utils/storageUtils";
 import memoryUtils from "../../utils/memoryUtils";
+import logo from "./images/logo.png";
+import "./login.less";
 
 const Item = Form.Item;
 export default class Login extends Component {
@@ -38,7 +38,7 @@ export default class Login extends Component {
       <div className='login'>
         <header className='login-header'>
           <img src={logo} alt='logo' />
-          <h1>React项目：后台管理系统0</h1>
+          <h1>React项目：后台管理系统</h1>
         </header>
         <section className='login-content'>
           <h2>用户登录</h2>
