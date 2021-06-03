@@ -5,10 +5,14 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { reqLogin } from "../../api";
 import { saveUser } from "../../utils/storageUtils";
 import memoryUtils from "../../utils/memoryUtils";
-import logo from "./images/logo.png";
+import logo from "../../assets/images/logo.png";
 import "./login.less";
 
 const Item = Form.Item;
+
+/**
+ * 登录页面路由
+ */
 export default class Login extends Component {
   //登录时表单验证成功的回调
   onFinish = async values => {
@@ -26,8 +30,6 @@ export default class Login extends Component {
     // 路由跳转
     this.props.history.replace("/");
   };
-  //表单验证失败的回调函数
-  onFinishFailed = () => {};
 
   //组件的渲染函数
   render() {
@@ -77,7 +79,6 @@ export default class Login extends Component {
             </Item>
             <Item
               name='password'
-              initialValue='admin'
               rules={[
                 {
                   required: true,
@@ -97,7 +98,6 @@ export default class Login extends Component {
                 prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
                 type='password'
                 placeholder='Password'
-                rules={[{ required: true, message: "请输入您的密码！" }]}
               />
             </Item>
             <Item>
