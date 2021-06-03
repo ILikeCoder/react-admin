@@ -83,7 +83,6 @@ class Header extends Component {
     clearInterval(this.timerID);
   }
   render() {
-<<<<<<< HEAD
     //用户信息
     const { username } = getUser();
     //标题
@@ -108,13 +107,6 @@ class Header extends Component {
         </div>
       </div>
     );
-=======
-<<<<<<< HEAD
-    return <div className='header'>Header</div>;
-=======
-    return <div className='header'>Header1</div>;
->>>>>>> dev
->>>>>>> master
   }
 }
 
