@@ -1,23 +1,22 @@
 import jsonp from "jsonp";
 import { message } from "antd";
 import axios from "axios";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
 //axios默认基础地址->URL
 axios.defaults.baseURL = "http://39.100.225.255:5000";
 
-//成都天气城市代码 510100 ->JSONP请求
-export const reqWeather = cityCode => {
-  return new Promise(resolve => {
-    let url = `https://restapi.amap.com/v3/weather/weatherInfo?parameters&key=0dc0b93ff761645a6ac95b9cfa7824f2&city=${cityCode}`;
-    jsonp(url, {}, (err, data) => {
-      if (data.status === "1") {
-        // 成功了
-        resolve(data.lives[0]);
-      } else {
-        message.success(err);
-      }
-    });
-  });
-};
+axios.interceptors.request.use(function (config) {
+  // 在发送请求之前做些什么，例如加入token
+  NProgress.start();
+  return config;
+});
+
+axios.interceptors.response.use(function (response) {
+  NProgress.done();
+  return response;
+});
 
 /**
  * ajax函数 用于封装axios发送请求
@@ -44,6 +43,21 @@ function ajax(url, data = {}, type = "GET") {
     });
   });
 }
+
+//成都天气城市代码 510100 ->JSONP请求
+export const reqWeather = cityCode => {
+  return new Promise(resolve => {
+    let url = `https://restapi.amap.com/v3/weather/weatherInfo?parameters&key=0dc0b93ff761645a6ac95b9cfa7824f2&city=${cityCode}`;
+    jsonp(url, {}, (err, data) => {
+      if (data.status === "1") {
+        // 成功了
+        resolve(data.lives[0]);
+      } else {
+        message.success(err);
+      }
+    });
+  });
+};
 
 //登录请求接口
 export const reqLogin = (username, password) =>
