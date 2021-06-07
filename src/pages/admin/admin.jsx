@@ -14,9 +14,9 @@ import User from "../user/User";
 import Pie from "../charts/Pie";
 import Bar from "../charts/Bar";
 import Line from "../charts/Line";
-import Order from "../order/Order";
+import NotFound from "../not-found/not-found";
 
-const { Footer, Sider, Content } = Layout;
+const { Sider, Content, Footer } = Layout;
 
 /**
  * 管理页面路由
@@ -34,6 +34,7 @@ export default class Admin extends Component {
           <Header>Header</Header>
           <Content style={{ margin: "15px 15px", backgroundColor: "#fff" }}>
             <Switch>
+              <Redirect to='/home' from='/' exact />
               <Route path='/home' component={Home} />
               <Route path='/category' component={Category} />
               <Route path='/product' component={Product} />
@@ -42,8 +43,7 @@ export default class Admin extends Component {
               <Route path='/charts/bar' component={Bar} />
               <Route path='/charts/line' component={Line} />
               <Route path='/charts/pie' component={Pie} />
-              <Route path='/order' component={Order} />
-              <Redirect to='/home' />
+              <Route component={NotFound} />
             </Switch>
           </Content>
           <Footer style={{ textAlign: "center", color: "#333" }}>
